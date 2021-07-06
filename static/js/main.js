@@ -191,3 +191,19 @@ function validURL(str) {
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
   return !!pattern.test(str);
 }
+
+function copytoclipboard(btn){
+  var copyText = document.getElementById("endurl_input");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  document.execCommand("copy");
+  btn.innerHTML="Copied"
+}
+
+function validateinput(){
+  var inp= document.forms["myForm"]["user_url"].value;
+  if (inp == "" || inp == null) {
+    alert("url required!..");
+    return false;
+  }
+}

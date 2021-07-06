@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{ url_for('static', filename='favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='favicon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -27,11 +27,11 @@
 </head>
 
  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-xl-9 d-flex align-items-center mt-3 mb-3 justify-content-between">
-          <h1 class="logo"><a href="index.html">Red-Li</a></h1>         
+        <div class="col-xl-9 d-flex align-items-center mg-t-b justify-content-between">
+           <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" class="logo-image" /><a style="margin-left: 10px;">Red-Li</a></h1>       
 
           <a href="#tracker" class="get-started-btn scrollto">Get Started</a>
         </div>
@@ -46,6 +46,8 @@
         <div class="col-xl-8">
           <h1>Red-Li - Track the end url</h1>
           <h2>It will show you the full redirection path of URLs, shortened links, or tiny URLs.</h2>
+          <a  class="download-btn" href="https://github.com/aashikm015/red-li/tree/master" target="_blank"><i class="bx bx-download"></i> Source code</a>
+
         </div>
       </div>
     </div>
@@ -66,11 +68,10 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="/track" method="post" role="form" class="php-email-form">
+            <form action="/track" method="post" role="form" name="myForm" onsubmit="return validateinput()" class="php-email-form">
       
               <div class="form-group">
                 <input type="url" class="form-control " name="user_url" placeholder="Enter the url.." data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
               </div>
               
               <div class="text-center"><input type="submit" value="Track" class="get-started-btn scrollto"></div>

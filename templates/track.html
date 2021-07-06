@@ -1,33 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>REDLI TRACKING</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Redirection link tracker</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='favicon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!--  CSS Files -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/icofont/icofont.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/boxicons/css/boxicons.min.css') }}">
+
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/table.css') }}">
 </head>
-<body><center>
-<h2> Tracking the END URL</h2>
-    <img src="{{ url_for('static', filename='redli.JPG') }}" width="300" height="250">
-    {% if redirect %}
-    <h4>Yes URL is Redirected or Shorten!</h4>
-    <h4>END URL : <a href="{{ endurl.url }}">{{ endurl.url }}</a> </h4>
-    <h4>Status Code : {{ endurl.status_code }}</h4>
-    <h2>Here the following redirected chain...</h2>
-<table border="1">
-    <thead>
-    <tr><td>Status Code</td><td>URL</td><td>Reason</td></tr>
-    </thead>
-    <tbody>
-    {% for r in redirect %}
-    <tr><td>{{ r.status_code }}</td><td>{{ r.url }}</td><td>{{ r.reason }}</td></tr>
-    {% endfor %}
-    </tbody>
-</table>
-    {% else %}
-    <h4>Given URL is NOT Redirected / Shorten</h4>
-    <h4>END URL : <a href="{{ endurl.url }}">{{ endurl.url }}</a> </h4>
-    <h4>Status Code : {{ endurl.status_code }}</h4>
+
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-9 d-flex align-items-center mt-3 mb-3 justify-content-between">           
+          <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}"  class="logo-image"  /><a style="margin-left: 10px;">Red-Li</a></h1>
+          <a href="/" class="get-started-btn">Go To Home</a>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+ <body>
+   <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+        <div class="col-xl-9 d-flex align-items-center mt-1 mb-1 justify-content-between">
+          <ol>
+          <li><a href="/">Home</a></li>
+          <li>Track</li>
+        </ol>
+        </div>
+      </div>
+
+        
+        <center>
+        <h1> Tracking the <strong>END URL</strong></h1>
+         {% if redirect %}
+        <h5>Yes URL is Redirected or Shorten!</h5>
+        <h6>Status Code : {{ endurl.status_code }}</h6>
+
+        <div class="row justify-content-center">
+          <div class="col col-lg-5">
+            <input type="url" class="form-control " placeholder="Enter the url.." value="{{ endurl.url }}" id="endurl_input" />
+          </div>
+          <div class="col col-lg-1">
+            <button class="btn text-center" style="background: #00b371;color: white;" onclick="copytoclipboard(this)">Copy</button>
+          </div>
+        </div> 
+
+    <div class="table-users">
+   <div class="header">redirected chain</div>
+   
+   <table cellspacing="0">
+      <tr>
+         <th>Status code</th>
+         <th>URL</th>
+         <th>Reason</th>
+      </tr>
+      {% for r in redirect %}
+      <tr>         
+         <td>{{ r.status_code }}</td>
+         <td>{{ r.url }}</td>
+         <td>{{ r.reason }}</td>
+      </tr>
+      {% endfor %}
+      
+      </tr>
+   </table>
+        {% else %}
+    <h5>Given URL is NOT Redirected / Shorten</h5>
+    <h6>END URL : <a href="{{ endurl.url }}">{{ endurl.url }}</a> </h6>
+    <h6>Status Code : {{ endurl.status_code }}</h6>
     <br>
     {% endif %}
-<button><a href="/">GO TO HOME</a> </button></center>
+
+        </center>
+      </div>
+    </section><!-- End Breadcrumbs -->
+  </main><!-- End #main -->
+  
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Red-Li</h3>
+      <p>Find a full redirection path of URLs and Track the end url to protect yourself from malicios sites</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/aashikm015/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://github.com/aashikm015" class="github"><i class="bx bxl-github"></i></a>
+        <a href="https://www.linkedin.com/in/mohamed-aashik-3852b1169/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Red-Li</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a >Mohamed Aashik</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <div id="preloader"></div>
+
+  <!-- Loading animation -->
+  <script src="{{ url_for('static', filename='libraries/jquery/jquery.min.js') }}"></script>
+
+   
+  <!--scroll down-->
+  <script src="{{ url_for('static', filename='libraries/jquery.easing/jquery.easing.min.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+
 </html>
