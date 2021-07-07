@@ -76,7 +76,7 @@
 		 display: none;
 	}
 }
- @media screen and (max-width: 500px) {
+ @media screen and (max-width: 699px) {
 	 .header {
 		 background-color: transparent;
 		 color: #e6fff6;

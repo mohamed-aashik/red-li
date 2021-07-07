@@ -1,126 +1,100 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Redirection link tracker</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{{ url_for('static', filename='favicon.png') }}" rel="icon">
-  <link href="{{ url_for('static', filename='favicon.png') }}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!--  CSS Files -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/bootstrap/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/icofont/icofont.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/boxicons/css/boxicons.min.css') }}">
-
-
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
- <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-xl-9 d-flex align-items-center mg-t-b justify-content-between">
-           <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" class="logo-image" /><a style="margin-left: 10px;">Red-Li</a></h1>       
-
-          <a href="#tracker" class="get-started-btn scrollto">Get Started</a>
-        </div>
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Redirection link tracker</title>
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <!-- Favicons -->
+      <link href="{{ url_for('static', filename='favicon.png') }}" rel="icon">
+      <link href="{{ url_for('static', filename='favicon.png') }}" rel="apple-touch-icon">
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <!--  CSS Files -->
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/bootstrap/css/bootstrap.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/icofont/icofont.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libraries/boxicons/css/boxicons.min.css') }}">
+      <!-- Template Main CSS File -->
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+   </head>
+   <!-- ======= Header ======= -->
+   <header id="header" class="fixed-top">
+      <div class="container-fluid">
+         <div class="row justify-content-center">
+            <div class="col-xl-9 d-flex align-items-center mg-t-b justify-content-between">
+               <h1 class="logo"><img src="{{ url_for('static', filename='logo.png') }}" class="logo-image" /><a style="margin-left: 10px;">Red-Li</a></h1>
+               <a href="#tracker" class="get-started-btn scrollto">Get Started</a>
+            </div>
+         </div>
       </div>
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-8">
-          <h1>Red-Li - Track the end url</h1>
-          <h2>It will show you the full redirection path of URLs, shortened links, or tiny URLs.</h2>
-          <a  class="download-btn" href="https://github.com/aashikm015/red-li/tree/master" target="_blank"><i class="bx bx-download"></i> Source code</a>
-
-        </div>
-      </div>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-     <!-- ======= Contact Section ======= -->
-    <section id="tracker" class="contact">
-    <center>
+   </header>
+   <!-- End Header -->
+   <!-- ======= Hero Section ======= -->
+   <section id="hero" class="d-flex flex-column justify-content-center">
       <div class="container">
-
-        <div class="section-title">
-          <h2>Tracker</h2>
-          <p>Enter the shortened url below to track.</p>
-        </div>
+         <div class="row justify-content-center">
+            <div class="col-xl-8">
+               <h1>Red-Li - Track the end url</h1>
+               <h2>It will show you the full redirection path of URLs, shortened links, or tiny URLs.</h2>
+               <a  class="download-btn" href="https://github.com/aashikm015/red-li/tree/master" target="_blank"><i class="bx bx-download"></i> Source code</a>
+            </div>
+         </div>
       </div>
+   </section>
+   <!-- End Hero -->
+   <main id="main">
+   <!-- ======= Contact Section ======= -->
+   <section id="tracker" class="contact">
+      <center>
+         <div class="container">
+            <div class="section-title">
+               <h2>Tracker</h2>
+               <p>Enter the shortened url below to track.</p>
+            </div>
+         </div>
+         <div class="container">
+            <div class="col-lg-8 mt-5 mt-lg-0">
+               <form action="/track" method="post" role="form" name="myForm" onsubmit="return validateinput()" class="php-email-form">
+                  <div class="form-group">
+                     <input type="url" class="form-control " name="user_url" placeholder="Enter the url.." data-msg="Please enter at least 8 chars of subject" />
+                  </div>
+                  <div class="text-center"><input type="submit" value="Track" class="get-started-btn scrollto"></div>
+               </form>
+            </div>
+         </div>
+         </div>
+      </center>
+   </section>
+   <!-- End Contact Section -->
+   <!-- ======= Footer ======= -->
+   <footer id="footer">
       <div class="container">
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="/track" method="post" role="form" name="myForm" onsubmit="return validateinput()" class="php-email-form">
-      
-              <div class="form-group">
-                <input type="url" class="form-control " name="user_url" placeholder="Enter the url.." data-msg="Please enter at least 8 chars of subject" />
-              </div>
-              
-              <div class="text-center"><input type="submit" value="Track" class="get-started-btn scrollto"></div>
-            </form>
-
-          </div>
-
-        </div>
+         <h3>Red-Li</h3>
+         <p>Find a full redirection path of URLs and Track the end url to protect yourself from malicios sites</p>
+         <div class="social-links">
+            <a href="https://www.instagram.com/aashikm015/" class="instagram" target="_blank"><i class="bx bxl-instagram"  ></i></a>
+            <a href="https://github.com/aashikm015" class="github" target="_blank"><i class="bx bxl-github"  ></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-aashik-3852b1169/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+         </div>
+         <div class="copyright">
+            &copy; Copyright <strong><span>Red-Li</span></strong>. All Rights Reserved
+         </div>
+         <div class="credits">
+            Designed by <a >Mohamed Aashik</a>
+         </div>
       </div>
-    </center>
-    </section><!-- End Contact Section -->
-
-
-   
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <h3>Red-Li</h3>
-      <p>Find a full redirection path of URLs and Track the end url to protect yourself from malicios sites</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/aashikm015/" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://github.com/aashikm015" class="github"><i class="bx bxl-github"></i></a>
-        <a href="https://www.linkedin.com/in/mohamed-aashik-3852b1169/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Red-Li</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a >Mohamed Aashik</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-
-  <div id="preloader"></div>
-
-  <!-- Loading animation -->
-  <script src="{{ url_for('static', filename='libraries/jquery/jquery.min.js') }}"></script>
-
-   
-  <!--scroll down-->
-  <script src="{{ url_for('static', filename='libraries/jquery.easing/jquery.easing.min.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-
-</body>
-
-
-
+   </footer>
+   <!-- End Footer -->
+   <div id="preloader"></div>
+   <!-- Loading animation -->
+   <script src="{{ url_for('static', filename='libraries/jquery/jquery.min.js') }}"></script>
+   <!--scroll down-->
+   <script src="{{ url_for('static', filename='libraries/jquery.easing/jquery.easing.min.js') }}"></script>
+   <!-- Template Main JS File -->
+   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   </body>
 </html>
+
